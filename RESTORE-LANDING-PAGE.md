@@ -1,8 +1,8 @@
 # Restore the public landing page and keep the admin dashboard
 
-The project must be uploaded with its folder structure preserved. Do NOT upload every file from every folder into the repository root.
+This project is prepared for the existing Git-connected Cloudflare Pages project. The archive has the website files at its top level. When copied into the GitHub repository, preserve all folders exactly as shown below.
 
-## Required structure
+## Required repository structure
 
 ```text
 index.html                  # Public landing page (NOT the admin login)
@@ -28,23 +28,24 @@ functions/
 schema.sql
 ```
 
-## Safest replacement method with GitHub Desktop
+## Safest repair method using GitHub Desktop
 
-1. Download and extract this ZIP on your computer.
-2. Install/open GitHub Desktop and choose **File → Clone Repository**.
-3. Select `Neilcyrus91/Neilcyrus91` and clone it to your computer.
-4. In Finder, open the cloned repository folder.
-5. Replace its project files with the contents of the extracted ZIP, preserving `admin/`, `assets/`, and `functions/` as folders. Do not put `admin/index.html` at the repository root.
-6. In GitHub Desktop, review the changed files. Confirm the root `index.html` is the public landing page and `admin/index.html` is inside `admin/`.
-7. Commit to `main` and click **Push origin**.
-8. Cloudflare Pages should automatically deploy the new commit. Wait for Success.
-9. Test the public page at `/` and admin at `/admin/`.
+1. Download and extract `neil-lead-funnel-github-ready.zip`.
+2. Open GitHub Desktop and choose **File → Clone Repository**.
+3. Select `Neilcyrus91/Neilcyrus91` and clone it to your Mac.
+4. Open the cloned repository folder in Finder.
+5. Copy the extracted project files and folders into the cloned repository, replacing the incorrect website files when asked. Keep the `admin/`, `assets/`, and `functions/` folders intact. Do not move `admin/index.html` to the repository root.
+6. Before committing, verify that the repository-root `index.html` begins with the title `Neil | Lead Funnel Builder — Free Lead Funnel Starter Guide` and that `admin/index.html` is still inside the `admin` folder.
+7. In GitHub Desktop, review the changes, commit them to `main`, then click **Push origin**.
+8. Wait for Cloudflare Pages to finish deploying the new commit.
+9. Test `/` for the public landing page and `/admin/` for the admin login.
 
 ## Cloudflare settings to retain
 
-- D1 binding name: `DB`
+- D1 binding variable name: `DB`
 - D1 database: `neil-lead-funnel-db`
 - Production secrets: `ADMIN_PASSWORD` and `SESSION_SECRET`
-- Run `schema.sql` in the D1 database console if you have not already done so.
+- Run `schema.sql` in the D1 database console if the `leads` table has not been created.
+- Redeploy after changing bindings or secrets.
 
-Do not put passwords, session secrets, or tokens in GitHub. The admin will not show sign-ups until the Functions are deployed and the D1 schema/binding are correctly configured.
+Never put passwords, session secrets, or tokens in GitHub or in a public chat. The admin will not display sign-ups until the Pages Functions are deployed and the D1 schema/binding are configured correctly.
